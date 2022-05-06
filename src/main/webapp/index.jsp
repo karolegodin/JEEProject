@@ -5,8 +5,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Roland Garros</title>
-<link rel="stylesheet" type="text/css" href="./rolandgarros.css">
+<link rel="stylesheet" type="text/css" href="rolandgarros.css"> 
+
 </head>
+<jsp:include page="./header.jsp"></jsp:include>
 <body>
 	<h1>Bienvenue sur la page d'accueil de Roland Garros</h1>
 </body>
