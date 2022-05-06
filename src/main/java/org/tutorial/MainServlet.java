@@ -9,8 +9,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet ("/")
+@WebServlet ("/index")
 public class MainServlet extends HttpServlet {
+	
+	private void doProcess (HttpServletRequest request, HttpServletResponse response) {
+        String pageName="/index.jsp";
+        
+	}
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -23,4 +28,9 @@ public class MainServlet extends HttpServlet {
         //aller sur la page localhost:8080/JEEProject/
 
   }
+	
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		doProcess(req,resp);
+	}
 }
