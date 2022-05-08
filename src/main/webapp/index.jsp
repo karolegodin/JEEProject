@@ -11,5 +11,6 @@
 <jsp:include page="./header.jsp"></jsp:include>
 <body>
 	<h1>Bienvenue sur la page d'accueil de Roland Garros</h1>
+	<a href="<%= request.getRequestURI() %>"> Liste des joueurs </a>
 </body>
 </html>
