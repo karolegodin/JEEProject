@@ -21,9 +21,11 @@ public class MainServlet extends HttpServlet {
 
         resp.setContentType("text/html");
 
-        PrintWriter out = resp.getWriter();
+        //PrintWriter out = resp.getWriter();
 
-        out.println("Hello World !");
+        //out.println("Hello World !");
+        
+        resp.sendRedirect(req.getContextPath() + "/index.jsp");
         
         //aller sur la page localhost:8080/JEEProject/
 
