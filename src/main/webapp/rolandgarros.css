@@ -7309,6 +7309,9 @@ button.bg-dark:focus {
   border-color: #000000 !important;
 }
 
+.border-green {
+  border-color : #003729 !important;
+}
 .border-white {
   border-color: #fff !important;
 }
@@ -8866,6 +8869,7 @@ button.bg-dark:focus {
 
 .mb-0,
 .my-0 {
+  color: #fff !important;
   margin-bottom: 0 !important;
 }
 
@@ -9053,6 +9057,7 @@ button.bg-dark:focus {
 
 .pr-2,
 .px-2 {
+  -webkit-tap-highlight-color: transparent;
   padding-right: 0.5rem !important;
 }
 
@@ -9077,6 +9082,7 @@ button.bg-dark:focus {
 
 .pr-3,
 .px-3 {
+  color: #fff !important;
   padding-right: 1rem !important;
 }
 

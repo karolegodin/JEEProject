@@ -17,12 +17,12 @@
                     <a href="#" class="px-3"><small class="font-weight-bold">Our Company</small></a>
                     <a href="#" class="px-3"><small class="font-weight-bold">Our Location</small></a>
                     <a href="#" class="px-3"><small class="font-weight-bold">Help Center</small></a>
-                    <a href="components.html" class="pl-3"><small class="font-weight-bold">Components</small></a>
+                    <a href="components.html" class="px-3"><small class="font-weight-bold">Components</small></a>
                 </div>
             </div>
         </div>
     </div>
-   <footer class="border border-dark border-left-0 border-right-0 border-bottom-0 p-4 bg-green">
+   <footer class="border border-green border-left-0 border-right-0 border-bottom-0 p-4 bg-green">
         <div class="container">
             <div class="row align-items-center text-center text-md-left">
                 <div class="col">
@@ -30,10 +30,10 @@
                 </div>
                 <div class="d-none d-md-block">
                     <h6 class="small mb-0">
-                        <a href="javascript:void(0)" class="px-2"><i class="ti-facebook"></i></a>
-                        <a href="javascript:void(0)" class="px-2"><i class="ti-twitter"></i></a>
-                        <a href="javascript:void(0)" class="px-2"><i class="ti-instagram"></i></a>
-                        <a href="javascript:void(0)" class="px-2"><i class="ti-google"></i></a>
+                        <a href="https://www.facebook.com/RolandGarros" class="px-2"><img alt="Facebook" src="./img/Facebook.svg"></a>
+                        <a href="https://twitter.com/rolandgarros" class="px-2"><img alt="Twitter" src="./img/Twitter.svg"></a>
+                        <a href="https://www.instagram.com/rolandgarros/" class="px-2"><img alt="Instagram" src="./img/Instagram.svg"></a>
+                        <a href="https://youtu.be/dQw4w9WgXcQ" class="px-2"><img alt="Youtube" src="./img/Youtube.svg"></a>
                     </h6>
                 </div>
             </div>
