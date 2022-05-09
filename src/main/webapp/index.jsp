@@ -13,4 +13,5 @@
 	<h1>Bienvenue sur la page d'accueil de Roland Garros</h1>
 	<a href="<%= request.getRequestURI() %>"> Liste des joueurs </a>
 </body>
+<jsp:include page="./footer.jsp"></jsp:include>
 </html>
