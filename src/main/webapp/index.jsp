@@ -8,10 +8,16 @@
 <link rel="stylesheet" type="text/css" href="rolandgarros.css"> 
 
 </head>
-<jsp:include page="./header.jsp"></jsp:include>
+<jsp:include page="./navbar.jsp"></jsp:include>
 <body>
-	<h1>Bienvenue sur la page d'accueil de Roland Garros</h1>
-	<a href="<%= request.getRequestURI() %>"> Liste des joueurs </a>
+<header class="header">
+	<div class="overlay">
+		<img class="logo" alt="Logo" src="./img/Logo.svg">
+			<h1 class="subtitle">Bienvenue sur le site (presque) officiel de</h1>
+			<h1 class="title">Roland-Garros 2022</h1>
+		</div>
+</header>
+
 </body>
 <jsp:include page="./footer.jsp"></jsp:include>
 </html>
