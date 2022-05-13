@@ -18,4 +18,14 @@ public class PlayerDAOMockImpl implements PlayerDAO {
 		return listeJoueurs;
 	}
 
+	public ArrayList<Match> findAllMatches() {
+		
+		ArrayList<Match> listeMatchs = new ArrayList<Match>();
+		
+		listeMatchs.add( new Match(1, 1, 2,  "Today",  11) );
+		listeMatchs.add( new Match(1, 1, 2,  "Today",  11) );
+		listeMatchs.add( new Match(1, 1, 2,  "Today",  11) );
+		
+		return listeMatchs;
+	}
 }

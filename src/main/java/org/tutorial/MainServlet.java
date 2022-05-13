@@ -19,8 +19,9 @@ public class MainServlet extends HttpServlet {
         
         PlayerService playerService = new PlayerServiceImpl();
         java.util.ArrayList<Player> listePlayer = playerService.getAllPlayers();
-        System.out.println("Liste des joueurs : création dans le servlet :");
-        System.out.println(listePlayer);
+        
+        //System.out.println("Liste des joueurs : création dans le servlet :");
+        //System.out.println(listePlayer);
         
         request.setAttribute("listeJoueurs", listePlayer);
         

@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.Arrays,java.util.List" %>
+<%@ page import="java.util.*" %>
 <%@ page import="org.tutorial.Player" %>
 <%@ page import="org.tutorial.*" %>
     
-<% java.util.ArrayList<Player> listeJoueurs = (java.util.ArrayList<Player>)request.getAttribute("listeJoueurs"); %>
+<% ArrayList<Player> listeJoueurs = (ArrayList<Player>)request.getAttribute("listeJoueurs"); %>
 <%-- TODO : créer une listeJoueurs dans le doProcess du servlet --%>
 
 <!DOCTYPE html>
@@ -35,13 +36,29 @@ l
 //out.println(J1);
 //out.println( liste_temporaire.get(0) );
 */
+
+//rs = statement.executeQuery("SELECT * FROM joueurs;");
+
+//System.out.println(listeJoueurs);
+
+ArrayList<Player> listeAnnexe = new ArrayList<Player>();
+Player J1 = new Player(1, "Mark", "Hamil",  false,  "UK",  69,  false, 10);
+Player J2  = new Player(2, "Stephen", "Hawking",  false,  "UK",  72,  true, 42);
+Player J3  = new Player(3, "LAM", "SIPRENDI",  false,  "FR",  21,  true, 10938983);
+Player J4  = new Player(4, "Karlol", "Karglass",  true,  "UK",  17,  true, 42);
+
+listeAnnexe.add(J1) ;
+listeAnnexe.add(J2) ;
+listeAnnexe.add(J3) ;
+listeAnnexe.add(J4) ;
 %>
 
 <h1>Liste des joueurs</h1>
 
 <ul>
-
-<%	for (Player joueur:listeJoueurs) {
+	<%
+	
+	for (Player joueur:listeAnnexe) {
 		int ID = joueur.getId();
 		String Prenom = joueur.getFirst_name();
 		String Nom = joueur.getLast_name();

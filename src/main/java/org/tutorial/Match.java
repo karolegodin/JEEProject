@@ -1,15 +1,15 @@
 package org.tutorial;
 
-public class match {
+public class Match {
 
 	// Variables de classe
 	private int id;
 	private int id_joueur1;
 	private int id_joueur2;
 	private String date;
-	private String court;
+	private int court;
 	
-	public match(int idmatch, int id1, int id2, String date, String court) {
+	public Match(int idmatch, int id1, int id2, String date, int court) {
 		this.id = idmatch;
 		this.id_joueur1= id1;
 		this.id_joueur2 = id2;
@@ -41,7 +41,7 @@ public class match {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public String getCourt() {
+	public int getCourt() {
 		return court;
 	}
 	public void setCourt(String court) {
