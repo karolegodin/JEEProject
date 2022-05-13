@@ -13,7 +13,37 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Liste des Joueurs</title>
+<link rel="stylesheet" type="text/css" href="rolandgarros.css"> 
+
+<style>
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 75%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+</style>
 </head>
+<jsp:include page="./navbar.jsp"></jsp:include>
+
+
+
 <body>
 <%-- Script --%>
 
@@ -62,15 +92,42 @@ listeAnnexe.add(J4) ;
 		int ID = joueur.getId();
 		String Prenom = joueur.getFirst_name();
 		String Nom = joueur.getLast_name();
+		String Pays = joueur.getCountry();
+		int Age = joueur.getAge();
+		int classement = joueur.getWorld_rank();
 	%>
 <li>
-<div> ID: <%=ID%> </div>
-<div> Nom : <%=Prenom%> <%=Nom %> </div>
+
+<button type="button" class="collapsible"><%=Prenom%> <%=Nom %> (<%=ID%>)</button>
+<div class="content">
+  <p>Pays : <%=Pays%></p>
+  <p>Age : <%=Age%></p>
+  <p>Classement mondial : <%=classement%></p>
+</div>
+
+
 </li>
 <%} %>
 </ul>
 
-<%-- <a href="<%= request.getRequestURI() %>">Refresh</a> --%>
 
+<%-- Script de la liste extensible--%>
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
 </body>
+<jsp:include page="./footer.jsp"></jsp:include>
 </html>
