@@ -15,13 +15,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto"> 
                     <li class="nav-item">
-                        <a class="nav-link" href="./page0.jsp">Aled</a>
+                        <a class="nav-link" href="./listeJoueurs.jsp">Joueurs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./page1.jsp">Oskour</a>
+                        <a class="nav-link" href="./listeMatchs.jsp">Matchs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./page2.jsp">Please</a>
+                        <a class="nav-link" href="./statistiques.jsp">Statistiques</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./page3.jsp">xedsrtfi</a>
