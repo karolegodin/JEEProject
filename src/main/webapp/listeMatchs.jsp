@@ -72,10 +72,12 @@ l
 //System.out.println(listeJoueurs);
 
 ArrayList<Match> listeAnnexe = new ArrayList<Match>();
-Match J1 = new Match(1, "Mark Hamil",  "Stephen Hawking", "18/06/2022", 11);
-Match J2  = new Match(2, "Leroy Jenkins",  "Nadal", "19/06/2022", 8);
-Match J3  = new Match(3, "Federer",  "Monfils", "19/06/2022", 17);
-Match J4  = new Match(4, "Monpere",  "Monsaintesprit", "21/06/2022", 2);
+
+Date dateMatch = new Date();
+Match J1 = new Match(1, "Mark Hamil",  "Stephen Hawking", dateMatch, "/", "14h30", 11, "/", "En cours");
+Match J2  = new Match(2, "Leroy Jenkins",  "Nadal", dateMatch, "/", "14h30", 8, "/", "En cours");
+Match J3  = new Match(3, "Federer",  "Monfils",  dateMatch, "/", "14h30", 17, "/", "En cours");
+Match J4  = new Match(4, "Monpere",  "Monsaintesprit",  dateMatch, "/", "14h30", 2, "/", "En cours");
 
 listeAnnexe.add(J1) ;
 listeAnnexe.add(J2) ;
@@ -92,7 +94,10 @@ listeAnnexe.add(J4) ;
 		int ID = match.getId();
 		String Joueur1 = match.getNom_joueur1();
 		String Joueur2 = match.getNom_joueur2();
-		String date = match.getDate();
+		Date date = match.getDate();
+		String heurematch = match.getHeure();
+		String statut = match.getStatus();
+		String score = match.getScore();
 		int court = match.getCourt();
 	%>
 <li>
@@ -100,8 +105,11 @@ listeAnnexe.add(J4) ;
 <button type="button" class="collapsible"><%=Joueur1%> - <%=Joueur2 %></button>
 <div class="content">
   <p>Numéro du match : <%=ID%></p>
-  <p>Date : <%=date%></p>
+  <p>Date : <%=date%>        Heure : <%=heurematch %></p>
   <p>Court : <%=court%></p>
+  <p>Statut : <%=statut%></p>
+  <p>Score : <%=score%></p>
+   
 </div>
 
 

@@ -72,10 +72,10 @@ l
 //System.out.println(listeJoueurs);
 
 ArrayList<Player> listeAnnexe = new ArrayList<Player>();
-Player J1 = new Player(1, "Mark", "Hamil",  false,  "UK",  69,  false, 10);
-Player J2  = new Player(2, "Stephen", "Hawking",  false,  "UK",  72,  true, 42);
-Player J3  = new Player(3, "LAM", "SIPRENDI",  false,  "FR",  21,  true, 10938983);
-Player J4  = new Player(4, "Karlol", "Karglass",  true,  "UK",  17,  true, 42);
+Player J1 = new Player("Mark", "Hamil",  "Droitier",  "UK",  69,  "Féminin", 10);
+Player J2  = new Player("Stephen", "Hawking",  "Gaucher",  "UK",  72,  "Masculin", 42);
+Player J3  = new Player("LAM", "SIPRENDI",  "Droitier",  "FR",  21,  "Masculin", 10938983);
+Player J4  = new Player("Karlol", "Karglass",  "Droitier",  "UK",  17,  "Masculin", 42);
 
 listeAnnexe.add(J1) ;
 listeAnnexe.add(J2) ;
@@ -89,20 +89,23 @@ listeAnnexe.add(J4) ;
 	<%
 	
 	for (Player joueur:listeAnnexe) {
-		int ID = joueur.getId();
 		String Prenom = joueur.getFirst_name();
 		String Nom = joueur.getLast_name();
 		String Pays = joueur.getCountry();
 		int Age = joueur.getAge();
 		int classement = joueur.getWorld_rank();
+		String main = joueur.getMain_hand();
+		String categ = joueur.getCategory();
 	%>
 <li>
 
-<button type="button" class="collapsible"><%=Prenom%> <%=Nom %> (<%=ID%>)</button>
+<button type="button" class="collapsible"><%=Prenom%> <%=Nom %> (<%=Pays%>)</button>
 <div class="content">
-  <p>Pays : <%=Pays%></p>
+  <p>Catégorie : <%=categ%></p>
   <p>Age : <%=Age%></p>
   <p>Classement mondial : <%=classement%></p>
+  <p>Main : <%=main%></p>
+  
 </div>
 
 

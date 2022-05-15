@@ -1,6 +1,7 @@
 package org.tutorial;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class PlayerDAOMockImpl implements PlayerDAO {
 
@@ -11,9 +12,9 @@ public class PlayerDAOMockImpl implements PlayerDAO {
 		
 		ArrayList<Player> listeJoueurs = new ArrayList<Player>();
 		
-		listeJoueurs.add( new Player(1, "Mark", "Hamil",  false,  "UK",  69,  false, 10) );
-		listeJoueurs.add( new Player(2, "Stephen", "Hawking",  false,  "UK",  72,  true, 42) );
-		listeJoueurs.add( new Player(3, "Blackout", "DeathFlake",  true,  "FR",  24,  true, 1239) );
+		listeJoueurs.add( new Player("Mark", "Hamil",  "Droitier",  "UK",  69,  "Féminin", 10) );
+		listeJoueurs.add( new Player("Stephen", "Hawking",  "Droitier",  "UK",  72,  "Masculin", 42) );
+		listeJoueurs.add( new Player("Blackout", "DeathFlake",  "Gaucher",  "FR",  24,  "Féminin", 1239) );
 		
 		return listeJoueurs;
 	}
@@ -22,9 +23,11 @@ public class PlayerDAOMockImpl implements PlayerDAO {
 		
 		ArrayList<Match> listeMatchs = new ArrayList<Match>();
 		
-		listeMatchs.add( new Match(1, 1, 2,  "Today",  11) );
-		listeMatchs.add( new Match(1, 1, 2,  "Today",  11) );
-		listeMatchs.add( new Match(1, 1, 2,  "Today",  11) );
+		Date dateMatch = new Date();
+		
+		listeMatchs.add( new Match(1, "Mark", "Hawking",  dateMatch, "/",  "15:30", 11, "/","A jouer") );
+		listeMatchs.add( new Match(1, "Blackout", "Hawking",  dateMatch, "/",  "15:30", 11, "/", "En cours") );
+		listeMatchs.add( new Match(1, "Hamil", "Blackout",  dateMatch, "/", "17:45",  11, "/", "En cours") );
 		
 		return listeMatchs;
 	}
