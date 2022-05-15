@@ -4,6 +4,11 @@
 <%@ page import="java.util.*" %>
 <%@ page import="org.tutorial.Player" %>
 <%@ page import="org.tutorial.*" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.Date" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="java.sql.Statement" %>
     
 <% ArrayList<Player> listeJoueurs = (ArrayList<Player>)request.getAttribute("listeJoueurs"); %>
 <%-- TODO : créer une listeJoueurs dans le doProcess du servlet --%>
@@ -50,15 +55,31 @@
 <%
 
 ArrayList<Player> listeAnnexe = new ArrayList<Player>();
-Player J1 = new Player("Mark", "Hamil",  "Droitier",  "UK",  69,  "Féminin", 10);
-Player J2  = new Player("Stephen", "Hawking",  "Gaucher",  "UK",  72,  "Masculin", 42);
-Player J3  = new Player("LAM", "SIPRENDI",  "Droitier",  "FR",  21,  "Masculin", 10938983);
-Player J4  = new Player("Karlol", "Karglass",  "Droitier",  "UK",  17,  "Masculin", 42);
 
-listeAnnexe.add(J1) ;
-listeAnnexe.add(J2) ;
-listeAnnexe.add(J3) ;
-listeAnnexe.add(J4) ;
+Connection c = DBManager.getInstance().getConnection();
+try (Statement statement = c.createStatement()) {
+  ResultSet rs = statement.executeQuery("SELECT * FROM info_team03_schema.joueurs;");
+    while (rs.next()) {
+    	String prénom = rs.getString("prénom");
+        String nom = rs.getString("nom");
+        String pays = rs.getString("pays");
+        String catégorie = rs.getString("catégorie");
+        int classementMondial = rs.getInt("classementMondial");
+        String main = rs.getString("main");
+        int age = rs.getInt("age");
+        Player P = new Player(prénom, nom, catégorie, pays, classementMondial, main, age);
+        listeAnnexe.add(P);
+    }
+} catch (SQLException e) {
+	e.printStackTrace();
+} finally {
+    if (c != null) {
+        try {
+            c.close();
+        } catch (SQLException e) {}
+    }
+}
+
 %>
 
 <h1>Liste des joueurs</h1>

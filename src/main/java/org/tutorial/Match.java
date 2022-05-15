@@ -1,5 +1,4 @@
 package org.tutorial;
-import java.util.*;
 
 
 public class Match {
@@ -8,14 +7,14 @@ public class Match {
 	private int id;
 	private String nom_joueur1;
 	private String nom_joueur2;
-	private Date date;
+	private java.sql.Date date;
 	private String duree;
 	private String heure;
 	private int court;
 	private String status;
 	private String score;
 	
-	public Match(int idmatch, String nom1, String nom2, Date date, String duree, String heure, int court, String score, String status) {
+	public Match(int idmatch, String nom1, String nom2, java.sql.Date date, String duree, String heure, int court, String score, String status) { 
 		this.id = idmatch;
 		this.nom_joueur1= nom1;
 		this.nom_joueur2 = nom2;
@@ -45,10 +44,10 @@ public class Match {
 	public void setNom_joueur2(String id_joueur2) {
 		this.nom_joueur2 = id_joueur2;
 	}
-	public Date getDate() {
+	public java.sql.Date getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(java.sql.Date date) {
 		this.date = date;
 	}
 	public int getCourt() {
@@ -90,5 +89,5 @@ public class Match {
 		this.heure = heure;
 	}
 	
-	
+ 
 }

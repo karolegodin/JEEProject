@@ -4,6 +4,11 @@
 <%@ page import="java.util.*" %>
 <%@ page import="org.tutorial.Player" %>
 <%@ page import="org.tutorial.*" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.Date" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="java.sql.Statement" %>
     
 <% ArrayList<Player> listeJoueurs = (ArrayList<Player>)request.getAttribute("listeJoueurs"); %>
 <%-- TODO : créer une listeJoueurs dans le doProcess du servlet --%>
@@ -51,16 +56,32 @@
 
 ArrayList<Match> listeAnnexe = new ArrayList<Match>();
 
-Date dateMatch = new Date();
-Match J1 = new Match(1, "Mark Hamil",  "Stephen Hawking", dateMatch, "/", "14h30", 11, "/", "En cours");
-Match J2  = new Match(2, "Leroy Jenkins",  "Nadal", dateMatch, "/", "14h30", 8, "/", "En cours");
-Match J3  = new Match(3, "Federer",  "Monfils",  dateMatch, "/", "14h30", 17, "/", "En cours");
-Match J4  = new Match(4, "Monpere",  "Monsaintesprit",  dateMatch, "/", "14h30", 2, "/", "En cours");
+Connection c = DBManager.getInstance().getConnection();
+try (Statement statement = c.createStatement()) {
+  ResultSet rs = statement.executeQuery("SELECT * FROM info_team03_schema.matches;");
+    while (rs.next()) {
+    	int id = rs.getInt("id");
+        String joueur1 = rs.getString("joueur1");
+        String joueur2 = rs.getString("joueur2");
+        int court = rs.getInt("court");
+        Date jour = rs.getDate("jour");
+        String heureDébut = rs.getString("heureDébut");
+        String heureFin = rs.getString("heureFin");
+        String score = rs.getString("score");
+        String statut = rs.getString("statut");
+        Match M = new Match(id, joueur1, joueur2, jour, "/", heureDébut, court, score, statut);
+        listeAnnexe.add(M);
+    }
+} catch (SQLException e) {
+	e.printStackTrace();
+} finally {
+    if (c != null) {
+        try {
+            c.close();
+        } catch (SQLException e) {}
+    }
+}
 
-listeAnnexe.add(J1) ;
-listeAnnexe.add(J2) ;
-listeAnnexe.add(J3) ;
-listeAnnexe.add(J4) ;
 %>
 
 <h1>Liste des matchs</h1>
