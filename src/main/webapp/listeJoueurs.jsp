@@ -6,7 +6,7 @@
 <%@ page import="org.tutorial.*" %>
     
 <% ArrayList<Player> listeJoueurs = (ArrayList<Player>)request.getAttribute("listeJoueurs"); %>
-<%-- TODO : créer une listeJoueurs dans le doProcess du servlet --%>
+<%-- TODO : crï¿½er une listeJoueurs dans le doProcess du servlet --%>
 
 <!DOCTYPE html>
 <html>
@@ -50,7 +50,7 @@
 <%
 
 ArrayList<Player> listeAnnexe = new ArrayList<Player>();
-Player J1 = new Player("Mark", "Hamil",  "Droitier",  "UK",  69,  "Féminin", 10);
+Player J1 = new Player("Mark", "Hamil",  "Droitier",  "UK",  69,  "Fï¿½minin", 10);
 Player J2  = new Player("Stephen", "Hawking",  "Gaucher",  "UK",  72,  "Masculin", 42);
 Player J3  = new Player("LAM", "SIPRENDI",  "Droitier",  "FR",  21,  "Masculin", 10938983);
 Player J4  = new Player("Karlol", "Karglass",  "Droitier",  "UK",  17,  "Masculin", 42);
@@ -79,7 +79,7 @@ listeAnnexe.add(J4) ;
 
 <button type="button" class="collapsible"><%=Prenom%> <%=Nom %> (<%=Pays%>)</button>
 <div class="content">
-  <p>Catégorie : <%=categ%></p>
+  <p>Catï¿½gorie : <%=categ%></p>
   <p>Age : <%=Age%></p>
   <p>Classement mondial : <%=classement%></p>
   <p>Main : <%=main%></p>
