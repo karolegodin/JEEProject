@@ -440,7 +440,7 @@ hr {
 
 small,
 .small {
-  font-size: 80%;
+  font-size: 70%;
   font-weight: 400;
 }
 
@@ -4998,6 +4998,10 @@ input[type="button"].btn-block {
   color: rgba(188, 140, 76, 0.9);
 }
 
+.navbar-title {
+	display : inline-block;
+	vertical-align: middle;
+}
 .navbar-dark .navbar-brand {
   color: #D35220;
 }

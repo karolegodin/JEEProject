@@ -17,7 +17,6 @@
 			<h1 class="title">Roland-Garros 2022</h1>
 		</div>
 </header>
-
 </body>
 <jsp:include page="./footer.jsp"></jsp:include>
 </html>

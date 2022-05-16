@@ -11,7 +11,7 @@
 <%@ page import="java.sql.Statement" %>
     
 <% ArrayList<Player> listeJoueurs = (ArrayList<Player>)request.getAttribute("listeJoueurs"); %>
-<%-- TODO : créer une listeJoueurs dans le doProcess du servlet --%>
+<%-- TODO : crï¿½er une listeJoueurs dans le doProcess du servlet --%>
 
 <!DOCTYPE html>
 <html>
@@ -58,7 +58,7 @@ ArrayList<Player> listeAnnexe = new ArrayList<Player>();
 
 Connection c = DBManager.getInstance().getConnection();
 try (Statement statement = c.createStatement()) {
-  ResultSet rs = statement.executeQuery("SELECT * FROM info_team03_schema.joueurs;");
+  ResultSet rs = statement.executeQuery("SELECT * FROM info_team03_schema.joueurs ORDER BY catégorie DESC, classementMondial ASC;");
     while (rs.next()) {
     	String prénom = rs.getString("prénom");
         String nom = rs.getString("nom");
@@ -100,7 +100,7 @@ try (Statement statement = c.createStatement()) {
 
 <button type="button" class="collapsible"><%=Prenom%> <%=Nom %> (<%=Pays%>)</button>
 <div class="content">
-  <p>Catégorie : <%=categ%></p>
+  <p>Catï¿½gorie : <%=categ%></p>
   <p>Age : <%=Age%></p>
   <p>Classement mondial : <%=classement%></p>
   <p>Main : <%=main%></p>
