@@ -18,32 +18,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Liste des Joueurs</title>
-<link rel="stylesheet" type="text/css" href="rolandgarros.css"> 
 
-<style>
-.collapsible {
-  background-color: #00503C;
-  color: white;
-  cursor: pointer;
-  padding: 18px;
-  width: 75%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-}
 
-.active, .collapsible:hover {
-  background-color: #D35220;
-}
-
-.content {
-  padding: 0 18px;
-  display: none;
-  overflow: hidden;
-  background-color: #f1f1f1;
-}
-</style>
 </head>
 <jsp:include page="./navbar.jsp"></jsp:include>
 

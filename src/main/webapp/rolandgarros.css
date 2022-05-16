@@ -11246,6 +11246,7 @@ hr {
 
 .navbar.nav-second {
   padding: 10px;
+  border-bottom: 1px solid #e1e1e1;
 }
 
 .navbar.nav-second .nav-link {
@@ -11560,4 +11561,33 @@ section.has-img-bg:after {
   font-size: 17px;
   opacity: .7;
   margin-bottom: 15px;
+}
+
+.collapsible {
+  font-weight: 600;
+  background-color: lightgray;
+  color: #00503C;
+  cursor: pointer;
+  padding: 18px;
+  width: 75%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  border-bottom: 1px solid darkgray;
+}
+
+.active, .collapsible:hover {
+  background-color: #D35220;
+  color: white;
+}
+
+.content {
+  padding: 0 18px;
+  padding-top: 18px;
+  display: none;
+  border-bottom: 1px solid darkgray;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  width: 75%;
 }
