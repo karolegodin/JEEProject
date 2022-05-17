@@ -37,7 +37,7 @@
                 </ul> 
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="https://youtu.be/dQw4w9WgXcQ" class="btn btn-primary btn-sm">Send nudes</a>
+                        <a href="https://youtu.be/dQw4w9WgXcQ" class="btn btn-primary btn-sm">Connexion</a>
                     </li>
                 </ul>
             </div>

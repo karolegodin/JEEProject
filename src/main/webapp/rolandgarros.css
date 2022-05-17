@@ -9084,6 +9084,13 @@ button.bg-dark:focus {
   padding-top: 1rem !important;
 }
 
+.middle {
+	padding-top: 1.5rem !important;
+	padding-bottom: 1.5rem !important;
+	border-left: 1px solid #003729 !important;
+	border-right: 1px solid #003729 !important;
+}
+
 .pr-3,
 .px-3 {
   color: #fff !important;
