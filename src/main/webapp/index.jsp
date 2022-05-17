@@ -8,7 +8,9 @@
 <link rel="stylesheet" type="text/css" href="rolandgarros.css"> 
 
 </head>
+
 <jsp:include page="./navbar.jsp"></jsp:include>
+
 <body>
 <header class="header">
 	<div class="overlay">

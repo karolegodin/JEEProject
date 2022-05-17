@@ -9,8 +9,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/index")
-public class MainServlet extends HttpServlet {
+@WebServlet("/")
+public class HomePageServlet extends HttpServlet {
 
 	/**
 	 * 
@@ -18,18 +18,8 @@ public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) {
-		// String pageName = "/index.jsp";
-		String pageToGo = "/listeJoueurs.jsp";
-
-		PlayerService playerService = new PlayerServiceImpl();
-		java.util.ArrayList<Player> listePlayer = playerService.getAllPlayers();
-
-		// System.out.println("Liste des joueurs : création dans le servlet :");
-		// System.out.println(listePlayer);
-
-		request.setAttribute("listeJoueurs", listePlayer);
-
-		RequestDispatcher rd = getServletContext().getRequestDispatcher(pageToGo);
+		String pageName = "/index.jsp";
+		RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
 		try {
 			rd.forward(request, response);
 		} catch (ServletException e) {
@@ -42,16 +32,6 @@ public class MainServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doProcess(req, resp);
-		// resp.setContentType("text/html");
-
-		// PrintWriter out = resp.getWriter();
-
-		// out.println("Hello World !");
-
-		// resp.sendRedirect(req.getContextPath() + "/index.jsp");
-
-		// aller sur la page localhost:8080/JEEProject/
-
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

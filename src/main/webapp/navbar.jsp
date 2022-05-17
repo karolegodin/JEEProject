@@ -37,8 +37,13 @@
                 </ul> 
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="https://youtu.be/dQw4w9WgXcQ" class="btn btn-primary btn-sm">Connexion</a>
+                        <a href="http://localhost:8080/JEEProject/login" class="btn btn-primary btn-sm">Connexion</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="http://localhost:8080/JEEProject/logout" class="btn btn-primary btn-sm">Déconnexion</a>
+                    </li>
+                 
+                    <li class="nav-item"> <span style="color:red">[ ${loginedUser.userName} ]</span> </li>
                 </ul>
             </div>
         </div>
