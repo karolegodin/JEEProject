@@ -1,16 +1,104 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
+<%@ page import="java.util.Arrays,java.util.List" %>
+<%@ page import="java.util.*" %>
+<%@ page import="org.tutorial.Player" %>
+<%@ page import="org.tutorial.*" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.Date" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="java.sql.Statement" %>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Statistiques</title>
+</head>
+<body>
+
+<%
+
+ArrayList<Player> listeAnnexe = new ArrayList<Player>();
+
+Connection c = DBManager.getInstance().getConnection();
+try (Statement statement = c.createStatement()) {
+  ResultSet rs = statement.executeQuery("SELECT * FROM info_team03_schema.joueurs ORDER BY catégorie DESC, classementMondial ASC;");
+    while (rs.next()) {
+        String prénom = rs.getString("prénom");
+        String nom = rs.getString("nom");
+        String pays = rs.getString("pays");
+        String catégorie = rs.getString("catégorie");
+        int classementMondial = rs.getInt("classementMondial");
+        String main = rs.getString("main");
+        int age = rs.getInt("age");
+        Player P = new Player(prénom, nom, catégorie, pays, classementMondial, main, age);
+        listeAnnexe.add(P);
+    }
+} catch (SQLException e) {
+    e.printStackTrace();
+} finally {
+    if (c != null) {
+        try {
+            c.close();
+        } catch (SQLException e) {}
+    }
+}
+
+%>
+
+	<h1>Bienvenue sur la page des statistiques</h1>
+	
+	<table id="SQLsortMe" class="table">
+		<thead>
+    		<tr>
+      			<th>Name</th>
+      			<th data-type="string">Categorie</th>
+      			<th data-type="number">Age</th>
+      			<th data-type="number">Classement</th>
+      			<th data-type="string">main</th>
+    		</tr>
+  		</thead>
+    
+  <tbody>
+	<%
+	
+	for (Player joueur:listeAnnexe) {
+		String Prenom = joueur.getFirst_name();
+		String Nom = joueur.getLast_name();
+		String Pays = joueur.getCountry();
+		int Age = joueur.getAge();
+		int classement = joueur.getWorld_rank();
+		String main = joueur.getMain_hand();
+		String categ = joueur.getCategory();
+	%>
 
 
 
-
+  	<tr>
+  		<td><%=Nom%></td>
+        <td><%=categ%></td>
+        <td><%=Age%></td>
+        <td><%=classement%></td>
+        <td><%=main%></td>
+   </tr>
+   <%} %>
+   </tbody>
+</table>
+</body>
+</html>
 
 <script>
+	
+	alert("Ça marche");
+
 	function onPageReady()
 	{
 		// Query the table
-		const table = document.getElementById('sortMe');
+		const table = document.getElementById('SQLsortMe');
 
 		// Query the headers
 		const headers = table.querySelectorAll('th');
@@ -100,109 +188,3 @@
 	// Verifying linking worked
 	//alert('You successfully linked your JavaScript file!');
 </script>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Statistiques</title>
-</head>
-<body>
-	<h1>Bienvenue sur la page des statistiques</h1>
-	<table id="sortMe" class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th data-type="number">number of match played</th>
-      <th data-type="number">total play time</th>
-      <th data-type="number">number of games won</th>
-      <th data-type="number">number of sets lost</th>
-      <th data-type="number">number of matches won</th>
-    </tr>
-  </thead>
-  
-  <tbody>
-  	<tr>
-        <td>Marc</td>
-        <td>31</td>
-        <td>1218</td>
-        <td>27</td>
-        <td>98</td>
-        <td>28</td>
-   </tr>
-   
-   <tr>
-        <td>Jean</td>
-        <td>6</td>
-        <td>1089</td>
-        <td>5</td>
-        <td>17</td>
-        <td>4</td>
-   </tr>
-   
-   <tr>
-        <td>Luc</td>
-        <td>48</td>
-        <td>1425</td>
-        <td>13</td>
-        <td>23</td>
-        <td>4</td>
-   </tr>
-   
-   <tr>
-        <td>Matthieu</td>
-        <td>40</td>
-        <td>910</td>
-        <td>39</td>
-        <td>137</td>
-        <td>9</td>
-   </tr>
-   
-   <tr>
-        <td>Baptiste</td>
-        <td>17</td>
-        <td>1345</td>
-        <td>10</td>
-        <td>43</td>
-        <td>13</td>
-   </tr>
-   
-   <tr>
-        <td>Pierre</td>
-        <td>20</td>
-        <td>1323</td>
-        <td>6</td>
-        <td>13</td>
-        <td>13</td>
-   </tr>
-   
-   <tr>
-        <td>Simon</td>
-        <td>28</td>
-        <td>1190</td>
-        <td>28</td>
-        <td>86</td>
-        <td>14</td>
-   </tr>
-   
-   <tr>
-        <td>Zébédé</td>
-        <td>14</td>
-        <td>1031</td>
-        <td>14</td>
-        <td>64</td>
-        <td>14</td>
-   </tr>
-   
-   <tr>
-        <td>Marie</td>
-        <td>13</td>
-        <td>936</td>
-        <td>2</td>
-        <td>39</td>
-        <td>11</td>
-   </tr>
-  </tbody>
-</table>
-</body>
-</html>
