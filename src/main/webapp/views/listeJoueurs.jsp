@@ -76,7 +76,7 @@ try (Statement statement = c.createStatement()) {
 
 <button type="button" class="collapsible"><%=Prenom%> <%=Nom %> (<%=Pays%>)</button>
 <div class="content">
-  <p>Catï¿½gorie : <%=categ%></p>
+  <p>Catégorie : <%=categ%></p>
   <p>Age : <%=Age%></p>
   <p>Classement mondial : <%=classement%></p>
   <p>Main : <%=main%></p>
