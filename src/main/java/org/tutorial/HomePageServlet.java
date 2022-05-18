@@ -18,7 +18,7 @@ public class HomePageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) {
-		String pageName = "/index.jsp";
+		String pageName = "/views/index.jsp";
 		RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
 		try {
 			rd.forward(request, response);

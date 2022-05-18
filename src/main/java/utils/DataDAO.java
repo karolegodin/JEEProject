@@ -69,6 +69,9 @@ public class DataDAO {
 				case 2:
 					u = new UserAccount(nom, mdp, SecurityConfig.ROLE_EDITEUR_MATCH);
 					break;
+				default:
+					u = new UserAccount(nom, mdp, SecurityConfig.ROLE_VISITEUR);
+					break;
 				}
 			}
 
