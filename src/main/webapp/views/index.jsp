@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Roland Garros</title>
-<link rel="stylesheet" type="text/css" href="rolandgarros.css"> 
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/JEEProject/css/rolandgarros.css"> 
 
 </head>
 
