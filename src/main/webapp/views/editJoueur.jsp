@@ -67,7 +67,7 @@ function createListItem(joueur, i){
 	mainButton.setAttribute("id", i);
 	mainButton.innerHTML= prenom + nom + "(" + pays + ")";
 	mainButton.addEventListener("click", function() {
-  		modifierLog(1);
+  		//modifierLog(1);
     });
 	
 }
@@ -90,11 +90,18 @@ listeAnnexe.add(J4) ;
 
 
 function modifierLog(i){
-	console.log("Bouton Modifier was clicked : "+listeJoueursJS[i]+".");
-	let newValues = new Array();
+	console.log("Bouton Modifier was clicked : "+listeJoueursJS[i]+" ("+i+").");
 	
-	prenom = document.getElementById(i).getElementsByClassName("ModifFormPrenom");
-	console.log("Prénom de la personne : " + prenom.value);
+	// prend les valeurs de la liste, dans la bonne ligne et prend la valeur
+	prenom = document.getElementsByClassName("ModifForm"+i)[0].value;
+	nom = document.getElementsByClassName("ModifForm"+i)[1].value;
+	pays = document.getElementsByClassName("ModifForm"+i)[2].value;
+	age = document.getElementsByClassName("ModifForm"+i)[3].value;
+	categ = document.getElementsByClassName("ModifForm"+i)[4].value;
+	classement = document.getElementsByClassName("ModifForm"+i)[5].value;
+	main = document.getElementsByClassName("ModifForm"+i)[6].value;
+	
+	console.log("Nouvelle personne : " + prenom+", "+nom+", "+pays+", "+ age+", "+categ+", "+classement+", "+main);
 }
 	
 
@@ -145,13 +152,13 @@ listeJoueursJS.push(tmpJoueur);
 <button type="button" id="<%=it%>" class="collapsible"><%=Prenom%> <%=Nom %> (<%=Pays%>)</button>
 <div class="content">
 
-  <p><input class="ModifFormPrenom" id="<%=it%>" value='<%=Prenom%>'> - Prenom</input></p>
-  <p><input class="ModifFormNom" id="<%=it%>"  value='<%=Nom%>'> - Nom</input></p>
-  <p><input class="ModifFormPays" id="<%=it%>"  value='<%=Pays%>'> - Pays</input></p>
-  <p><input class="ModifFormAge" id="<%=it%>"  value='<%=Age%>'> - Age</input></p>
-  <p><input class="ModifFormCateg" id="<%=it%>"  value='<%=categ%>'> - Categorie</input></p>
-  <p><input class="ModifFormClassement" id="<%=it%>"  value='<%=classement%>'> - Classement mondial</input></p>
-  <p><input class="ModifFormMain" id="<%=it%>"  value='<%=main%>'> - Main</input></p>
+  <p><input class="ModifForm<%=it%>" name="Prenom" value='<%=Prenom%>'> - Prenom</input></p>
+  <p><input class="ModifForm<%=it%>" name="Nom" value='<%=Nom%>'> - Nom</input></p>
+  <p><input class="ModifForm<%=it%>" name="Pays" value='<%=Pays%>'> - Pays</input></p>
+  <p><input class="ModifForm<%=it%>" name="Age" value='<%=Age%>'> - Age</input></p>
+  <p><input class="ModifForm<%=it%>" name="Categ" value='<%=categ%>'> - Categorie</input></p>
+  <p><input class="ModifForm<%=it%>" name="Classement" value='<%=classement%>'> - Classement mondial</input></p>
+  <p><input class="ModifForm<%=it%>" name="Prenom" value='<%=main%>'> - Main</input></p>
 
  
 </div>
