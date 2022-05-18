@@ -42,6 +42,5 @@
 				    <servlet-name>Home</servlet-name>
 				    <jsp-file>/webapp/view/index.jsp</jsp-file>
 				</servlet>
-						
-  
+			
  </web-app>

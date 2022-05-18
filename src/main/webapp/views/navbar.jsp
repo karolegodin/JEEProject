@@ -5,13 +5,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="rolandgarros.css"> 
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/rolandgarros.css"> 
 </head>
 <body>
     <nav class="nav-second navbar custom-navbar navbar-expand-sm sticky-top bg-white">
         <div class="container">
         	<a class="navbar-brand" href="./">
-        		<img src="./img/Logo.svg">
+        		<img src="${pageContext.request.contextPath}/img/Logo.svg">
         		<div class="navbar-title">
         			<strong class="small">Roland-Garros</strong>
         			<h1 class="sub small">16 mai - 5 Juin</h1>
@@ -23,24 +23,24 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto"> 
                     <li class="nav-item">
-                        <a class="nav-link" href="./listeJoueurs.jsp">Joueurs</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/views/listeJoueurs.jsp">Joueurs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./listeMatchs.jsp">Matchs</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/views/listeMatchs.jsp">Matchs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./statistiques.jsp">Statistiques</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/views/statistiques.jsp">Statistiques</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./page3.jsp">xedsrtfi</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/views/page3.jsp">xedsrtfi</a>
                     </li>
                 </ul> 
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="http://localhost:8080/JEEProject/login" class="btn btn-primary btn-sm">Connexion</a>
+                        <a href="${pageContext.request.contextPath}/login" class="btn btn-primary btn-sm">Connexion</a>
                     </li>
                     <li class="nav-item">
-                        <a href="http://localhost:8080/JEEProject/logout" class="btn btn-primary btn-sm">Déconnexion</a>
+                        <a href="${pageContext.request.contextPath}/logout" class="btn btn-primary btn-sm">Déconnexion</a>
                     </li>
                  
                     <li class="nav-item"> <span style="color:red">[ ${loginedUser.userName} ]</span> </li>
