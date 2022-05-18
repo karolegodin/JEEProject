@@ -56,11 +56,11 @@ try (Statement statement = c.createStatement()) {
 	<table id="SQLsortMe" class="table table-striped table-hover">
 		<thead>
     		<tr>
-      			<th>Name</th>
-      			<th data-type="string">Categorie</th>
+      			<th>Nom</th>
+      			<th data-type="string">Catégorie</th>
       			<th data-type="number">Age</th>
       			<th data-type="number">Classement</th>
-      			<th data-type="string">main</th>
+      			<th data-type="string">Main</th>
     		</tr>
   		</thead>
     
