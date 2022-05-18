@@ -13,7 +13,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Liste des Joueurs</title>
-<link rel="stylesheet" type="text/css" href="rolandgarros.css"> 
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/rolandgarros.css"> 
 
 <style>
 .collapsible {

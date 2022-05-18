@@ -23,7 +23,7 @@ public class EditeurMatchServlet extends HttpServlet {
 
 		RequestDispatcher dispatcher //
 				= this.getServletContext()//
-						.getRequestDispatcher("/WEB-INF/views/pageDeModifMatch.jsp");
+						.getRequestDispatcher("/view/editMatch.jsp");
 
 		dispatcher.forward(request, response);
 	}
