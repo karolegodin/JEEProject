@@ -23,7 +23,7 @@ public class EditeurJoueurServlet extends HttpServlet {
 
 		RequestDispatcher dispatcher //
 				= this.getServletContext()//
-						.getRequestDispatcher("/WEB-INF/pageDeModifJoueurs.jsp");
+						.getRequestDispatcher("/views/editJoueur.jsp");
 
 		dispatcher.forward(request, response);
 	}
