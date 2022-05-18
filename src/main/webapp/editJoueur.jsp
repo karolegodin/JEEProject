@@ -43,60 +43,8 @@
 <jsp:include page="./navbar.jsp"></jsp:include>
 
 <script>
-function createListItem(joueur){
-	// Un élement de la liste : bouton dépliable, contenu
-	let partie = document.createElement("li");
-	
-	// Retrieving joueur's values
-	let Prenom = joueur.getFirst_name();
-	let Nom = joueur.getLast_name();
-	let Pays = joueur.getCountry();
-	let Age = joueur.getAge();
-	let classement = joueur.getWorld_rank();
-	let main = joueur.getMain_hand();
-	let categ = joueur.getCategory();
-	
-	// Collapsible
-	let collapsible = document.createElement("button");
-	collapsible.setAttribute("type","button");
-	collapsible.setAttribute("class","collapsible");
-	let contenuPrincipal = `${Prenom} ${Nom} (${Pays})`;
-	partie.appendChild(collapsible);
-	
-	// Contenu du collapsible
-	let content = document.createElement("div");
-	content.setAttribute("class","content");
-
-	// Joueur's values list
-	let p_categ = document.createElement("p");
-	let p_categ_word = `Catégorie : ${categ}`;
-	p_categ.innerText = p_categ_word;
-	content.appendChild(p_categ);
-	
-	// Adding a DELETE Button
-	let delBtn = document.createElement("button");
-	delBtn.innerHTML = "Supprimer";
-	partie.appendChild(delBtn);
-	
-	// Adding a CHANGE Button
-	let patchBtn = document.createElement("button");
-	patchBtn.innerHTML = "Modifier";
-	partie.appendChild(patchBtn);
-	
-	return liste;
-}
-
-function modifierLog(i){
-	console.log("Bouton Modifier was clicked : "+i+".")
-}
-
-function supprimerLog(i){
-	console.log("Bouton Supprimer was clicked : "+i+".")
-}
-</script>
-
-<body>
 <%-- Script --%>
+var listeJoueursJS = new Array();
 
 <%
 
@@ -112,13 +60,29 @@ listeAnnexe.add(J3) ;
 listeAnnexe.add(J4) ;
 %>
 
+
+
+
+function modifierLog(i){
+	console.log("Bouton Modifier was clicked : "+listeJoueursJS[i]+".")
+}
+
+function supprimerLog(i){
+	console.log("Bouton Supprimer was clicked : "+i+".")
+}
+</script>
+
+<body>
+
+
 <h1>Liste des joueurs</h1>
 
 <ul>
 	<%
-	int iterateur = 0;
+	int it = -1;
+	
 	for (Player joueur:listeAnnexe) {
-		iterateur += 1;
+		it++;
 		String Prenom = joueur.getFirst_name();
 		String Nom = joueur.getLast_name();
 		String Pays = joueur.getCountry();
@@ -127,6 +91,21 @@ listeAnnexe.add(J4) ;
 		String main = joueur.getMain_hand();
 		String categ = joueur.getCategory();
 	%>
+
+<script>
+//On passe la liste Java en JS
+var tmpJoueur = new Array(7);
+tmpJoueur[0]='<%=Prenom%>';
+tmpJoueur[1]='<%=Nom%>';
+tmpJoueur[2]='<%=Pays%>';
+tmpJoueur[3]='<%=categ%>';
+tmpJoueur[4]='<%=Age%>';
+tmpJoueur[5]='<%=classement%>';
+tmpJoueur[6]='<%=main%>';
+
+listeJoueursJS.push(tmpJoueur);
+</script>
+	
 <li>
 
 <button type="button" class="collapsible"><%=Prenom%> <%=Nom %> (<%=Pays%>)</button>
@@ -139,14 +118,21 @@ listeAnnexe.add(J4) ;
   
 </div>
 
-  <button type="button" id="mod_button" class="Modifier">Modifier</button>
-  <button type="button" id="del_button" class="Supprimer">Supprimer</button>
-
-
-
+  <button id="mod_<%=it%>" class="Modifier">Modifier</button>
+  	<script>
+  		var bouton = document.getElementById("mod_<%=it%>");
+  		bouton.addEventListener("click", function() {
+  		    modifierLog('<%=it%>');
+  	  });
+    </script>
+  <button id="sup_<%=it%>" class="Supprimer">Supprimer</button>
 
 </li>
 <% } %>
+
+<script>
+console.log(listeJoueursJS);
+</script>
 </ul>
 
 
@@ -168,18 +154,17 @@ for (i = 0; i < coll.length; i++) {
 }
 
 // Ajout des eventListeners des boutons "modifier"
-var mod_list = document.getElementsByClassName("Modifier");
-var i2;
-for (i2 = 0; i2 < mod_list.length; i2++) {
-	mod_list[i2].addEventListener("click", modifierLog(i2));
+var list = document.getElementsByClassName("Modifier");
+var t;
+
+for (t = 0; t < list.length; t++) {
+	list[t].addEventListener("click", function() {
+	    modifierLog();
+	  });
 }
 
 //Ajout des eventListeners des boutons "supprimer"
-var mod_list = document.getElementsByClassName("Supprimer");
-var i3;
-for (i3 = 0; i3 < mod_list.length; i3++) {
-	mod_list[i3].addEventListener("click", modifierLog(i3));
-}
+
 
 </script>
 </body>
