@@ -18,6 +18,7 @@
 <meta charset="ISO-8859-1">
 <title>Statistiques</title>
 </head>
+<jsp:include page="./navbar.jsp"></jsp:include>
 <body>
 
 <%
@@ -52,7 +53,7 @@ try (Statement statement = c.createStatement()) {
 
 	<h1>Bienvenue sur la page des statistiques</h1>
 	
-	<table id="SQLsortMe" class="table">
+	<table id="SQLsortMe" class="table table-striped table-hover">
 		<thead>
     		<tr>
       			<th>Name</th>

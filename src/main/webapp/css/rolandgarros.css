@@ -115,6 +115,7 @@ ul,
 dl {
   margin-top: 0;
   margin-bottom: 1rem;
+  list-style: none;
 }
 
 ol ol,
@@ -1876,7 +1877,7 @@ pre code {
 
 .table-hover tbody tr:hover {
   color: #444;
-  background-color: rgba(0, 0, 0, 0.075);
+  background-color: rgba(0, 0, 0, 0.075) !important;
 }
 
 .table-primary,
