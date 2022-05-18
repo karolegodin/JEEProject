@@ -39,11 +39,39 @@
   background-color: #f1f1f1;
 }
 </style>
+
+</style>
 </head>
 <jsp:include page="./navbar.jsp"></jsp:include>
 
 <script>
 <%-- Script --%>
+
+function init(){
+	var i;
+	for(i = 0; i < listeJoueursJS.length; i++){
+		createListItem( listeJoueursJS[i], i );
+	}
+}
+
+function createListItem(joueur, i){
+	let item = document.createElement("li");
+	
+	let prenom = joueur[0];
+	let nom = joueur[1];
+	let pays = joueur[2];
+	
+	let mainButton = document.createElement("button");
+	mainButton.setAttribute("type","button");
+	mainButton.setAttribute("class","collapsible");
+	mainButton.setAttribute("id", i);
+	mainButton.innerHTML= prenom + nom + "(" + pays + ")";
+	mainButton.addEventListener("click", function() {
+  		modifierLog(1);
+    });
+	
+}
+
 var listeJoueursJS = new Array();
 
 <%
@@ -61,21 +89,27 @@ listeAnnexe.add(J4) ;
 %>
 
 
-
-
 function modifierLog(i){
-	console.log("Bouton Modifier was clicked : "+listeJoueursJS[i]+".")
+	console.log("Bouton Modifier was clicked : "+listeJoueursJS[i]+".");
+	let newValues = new Array();
+	
+	prenom = document.getElementById(i).getElementsByClassName("ModifFormPrenom");
+	console.log("Prénom de la personne : " + prenom.value);
 }
+	
 
 function supprimerLog(i){
 	console.log("Bouton Supprimer was clicked : "+i+".")
 }
+
+//document.addEventListener('DOMContentLoaded',init);
 </script>
 
 <body>
 
 
 <h1>Liste des joueurs</h1>
+Laisser un blanc laisse l'information inchangée.
 
 <ul>
 	<%
@@ -108,23 +142,28 @@ listeJoueursJS.push(tmpJoueur);
 	
 <li>
 
-<button type="button" class="collapsible"><%=Prenom%> <%=Nom %> (<%=Pays%>)</button>
+<button type="button" id="<%=it%>" class="collapsible"><%=Prenom%> <%=Nom %> (<%=Pays%>)</button>
 <div class="content">
 
-  <p>Catégorie : <%=categ%></p>
-  <p>Age : <%=Age%></p>
-  <p>Classement mondial : <%=classement%></p>
-  <p>Main : <%=main%></p>
-  
+  <p><input class="ModifFormPrenom" id="<%=it%>" value='<%=Prenom%>'> - Prenom</input></p>
+  <p><input class="ModifFormNom" id="<%=it%>"  value='<%=Nom%>'> - Nom</input></p>
+  <p><input class="ModifFormPays" id="<%=it%>"  value='<%=Pays%>'> - Pays</input></p>
+  <p><input class="ModifFormAge" id="<%=it%>"  value='<%=Age%>'> - Age</input></p>
+  <p><input class="ModifFormCateg" id="<%=it%>"  value='<%=categ%>'> - Categorie</input></p>
+  <p><input class="ModifFormClassement" id="<%=it%>"  value='<%=classement%>'> - Classement mondial</input></p>
+  <p><input class="ModifFormMain" id="<%=it%>"  value='<%=main%>'> - Main</input></p>
+
+ 
 </div>
 
   <button id="mod_<%=it%>" class="Modifier">Modifier</button>
-  	<script>
-  		var bouton = document.getElementById("mod_<%=it%>");
-  		bouton.addEventListener("click", function() {
-  		    modifierLog('<%=it%>');
-  	  });
-    </script>
+  <script>
+  var mods = document.getElementById("mod_<%=it%>");
+  mods.addEventListener("click", function() {
+  		modifierLog(<%=it%>);
+    });
+  </script>
+  
   <button id="sup_<%=it%>" class="Supprimer">Supprimer</button>
 
 </li>
@@ -135,12 +174,11 @@ console.log(listeJoueursJS);
 </script>
 </ul>
 
-
 <%-- Script de la liste extensible--%>
 <script>
+
 var coll = document.getElementsByClassName("collapsible");
 var i;
-
 for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
     this.classList.toggle("active");
@@ -152,19 +190,6 @@ for (i = 0; i < coll.length; i++) {
     }
   });
 }
-
-// Ajout des eventListeners des boutons "modifier"
-var list = document.getElementsByClassName("Modifier");
-var t;
-
-for (t = 0; t < list.length; t++) {
-	list[t].addEventListener("click", function() {
-	    modifierLog();
-	  });
-}
-
-//Ajout des eventListeners des boutons "supprimer"
-
 
 </script>
 </body>

@@ -32,7 +32,7 @@
                         <a class="nav-link" href="./statistiques.jsp">Statistiques</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./page3.jsp">xedsrtfi</a>
+                        <a class="nav-link" href="./editJoueur.jsp">Modifier joueurs</a>
                     </li>
                 </ul> 
                 <ul class="navbar-nav ml-auto">
