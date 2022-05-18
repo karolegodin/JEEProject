@@ -10,7 +10,7 @@
 <body>
     <nav class="nav-second navbar custom-navbar navbar-expand-sm sticky-top bg-white">
         <div class="container">
-        	<a class="navbar-brand" href="./">
+        	<a class="navbar-brand" href="${pageContext.request.contextPath}">
         		<img src="${pageContext.request.contextPath}/img/Logo.svg">
         		<div class="navbar-title">
         			<strong class="small">Roland-Garros</strong>

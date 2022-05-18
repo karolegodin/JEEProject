@@ -14,7 +14,7 @@
 <body>
 <header class="header">
 	<div class="overlay">
-		<img class="logo" alt="Logo" src="./img/Logo.svg">
+		<img class="logo" alt="Logo" src="${pageContext.request.contextPath}/img/Logo.svg">
 			<h1 class="subtitle">Bienvenue sur le site (presque) officiel de</h1>
 			<h1 class="title">Roland-Garros 2022</h1>
 		</div>
