@@ -142,11 +142,11 @@ try (Statement statement = c.createStatement()) {
 	<table id="SQLsortMeFemmes" class="table table-bordered table-striped table-hover">
 		<thead>
     		<tr>
-      			<th>Name</th>
-      			<th data-type="string">Categorie</th>
-      			<th data-type="number">Age</th>
+      			<th>Nom</th>
+      			<th data-type="string">Catégorie</th>
+      			<th data-type="number">Âge</th>
       			<th data-type="number">Classement</th>
-      			<th data-type="string">main</th>
+      			<th data-type="string">Main</th>
       			<th data-type="number">Durée de jeu totale</th>
       			<th data-type="number">Nombre de Jeux Gagnés</th>
       			<th data-type="number">Nombre de Sets Perdus</th>
@@ -189,11 +189,11 @@ try (Statement statement = c.createStatement()) {
 	<table id="SQLsortMeHommes" class="table table-bordered table-striped table-hover">
 		<thead>
     		<tr>
-      			<th>Name</th>
-      			<th data-type="string">Categorie</th>
-      			<th data-type="number">Age</th>
+      			<th>Nom</th>
+      			<th data-type="string">Catégorie</th>
+      			<th data-type="number">Âge</th>
       			<th data-type="number">Classement</th>
-      			<th data-type="string">main</th>
+      			<th data-type="string">Main</th>
       			<th data-type="number">Durée de jeu totale</th>
       			<th data-type="number">Nombre de Jeux Gagnés</th>
       			<th data-type="number">Nombre de Sets Perdus</th>
