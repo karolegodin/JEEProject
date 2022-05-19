@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,9 +33,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/views/statistiques.jsp">Statistiques</a>
                     </li>
+                    
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/editJoueur">Modifier joueurs</a>
                     </li>
+                  
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/editMatchs">Modifier matchs</a>
                     </li>

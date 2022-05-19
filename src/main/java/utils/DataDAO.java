@@ -12,39 +12,6 @@ import config.SecurityConfig;
 
 public class DataDAO {
 
-	// private static final Map<String, UserAccount> mapUsers = new HashMap<String,
-	// UserAccount>();
-
-	static {
-		initUsers();
-	}
-
-	private static void initUsers() {
-
-		/*
-		 * This user has a role as EMPLOYEE. UserAccount emp = new
-		 * UserAccount("employee1", "123", UserAccount.GENDER_MALE, //
-		 * SecurityConfig.ROLE_EDITEUR_JOUEUR);
-		 * 
-		 * // This user has 2 roles EDITEUR JOUEUR and EDITEUR MATCH. UserAccount mng =
-		 * new UserAccount("manager1", "123", UserAccount.GENDER_MALE, //
-		 * SecurityConfig.ROLE_EDITEUR_JOUEUR, SecurityConfig.ROLE_EDITEUR_MATCH);
-		 * 
-		 * mapUsers.put(emp.getUserName(), emp); mapUsers.put(mng.getUserName(), mng);
-		 * 
-		 * PreparedStatement stmt = null; //try stmt = conn.
-		 * prepareStatement("SELECT * FROM info_team03_schema.users WHERE users.nom = "
-		 * + userName + " AND users.mdp = " + password + " ;"); stmt.setString(1,
-		 * userName); stmt.setString(2, password);
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 */
-	}
-
 	// Find a User by userName and password.
 	public static UserAccount findUser(String userName, String password) {
 		Connection c = DBManager.getInstance().getConnection();
