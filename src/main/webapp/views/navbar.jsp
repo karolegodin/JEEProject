@@ -34,6 +34,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/editJoueur">Modifier joueurs</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/editMatch.jsp">Modifier matchs</a>
+                    </li>
                 </ul> 
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
