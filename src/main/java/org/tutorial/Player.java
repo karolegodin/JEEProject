@@ -11,6 +11,11 @@ public class Player {
 	private int world_rank;
 	private String main_hand;
 	private int age;
+	private int NbMatchesRemportes;
+	private int DureeJeu;
+	private int NbJeuxGagnes;
+	private int NbSetsPerdus;
+	private int NbMatchesPerdus;
 	
 	// Constructor
 	public Player(String f_name, String l_name, String cat, String country, int w_rank, String m_hand, int age){
@@ -68,5 +73,54 @@ public class Player {
 		this.age = age;
 	}
 	
+	// Nombre de matches remportés
+	public int getNbMatchesRemportes()
+	{
+		return NbMatchesRemportes;
+	}
+	public void setNbMatchesRemportes(int NbMatchesRemportes)
+	{
+		this.NbMatchesRemportes = NbMatchesRemportes;
+	}
+	
+	// Durée totale de jeu
+	public int getDureeJeu()
+	{
+		return DureeJeu;
+	}
+	public void setDureeJeu(int DureeJeu)
+	{
+		this.DureeJeu = DureeJeu;
+	}
+	
+	// Nombre de jeux gagnés
+	public int getNbJeuxGagnes()
+	{
+		return NbJeuxGagnes;
+	}
+	public void setNbJeuxGagnes(int NbJeuxGagnes)
+	{
+		this.NbJeuxGagnes = NbJeuxGagnes;
+	}
+	
+	// Nombre de sets perdus
+	public int getNbSetsPerdus()
+	{
+		return NbSetsPerdus;
+	}
+	public void setNbSetsPerdus(int NbSetsPerdus)
+	{
+		this.NbSetsPerdus = NbSetsPerdus;
+	}
+	
+	// Nombre de matches perdus
+	public int getNbMatchesPerdus()
+	{
+		return NbMatchesPerdus;
+	}
+	public void setNbMatchesPerdus(int NbMatchesPerdus)
+	{
+		this.NbMatchesPerdus = NbMatchesPerdus;
+	}
 	
 }
