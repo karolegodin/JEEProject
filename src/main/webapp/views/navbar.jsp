@@ -43,7 +43,7 @@
                         <a href="${pageContext.request.contextPath}/login" class="btn btn-primary btn-sm">Connexion</a>
                     </li>
                     <li class="nav-item">
-                        <a href="${pageContext.request.contextPath}/logout" class="btn btn-primary btn-sm">Dï¿½connexion</a>
+                        <a href="${pageContext.request.contextPath}/logout" class="btn btn-primary btn-sm">Déconnexion</a>
                     </li>
                  
                     <li class="nav-item"> <span style="color:red">[ ${loginedUser.userName} ]</span> </li>
