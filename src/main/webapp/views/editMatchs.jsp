@@ -20,29 +20,6 @@
 <title>Liste des Joueurs</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/rolandgarros.css"> 
 
-<style>
-.collapsible {
-  background-color: #00503C;
-  color: white;
-  cursor: pointer;
-  padding: 18px;
-  width: 75%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-}
-
-.active, .collapsible:hover {
-  background-color: #D35220;
-}
-
-.content {
-  padding: 0 18px;
-  display: none;
-  overflow: hidden;
-  background-color: #f1f1f1;
-}
 </style>
 </head>
 <jsp:include page="./navbar.jsp"></jsp:include>
@@ -55,15 +32,18 @@ function modifierLog(i){
 	console.log("Bouton Modifier was clicked : "+listeMatchsJS[i]+" ("+i+").");
 	
 	// prend les valeurs de la liste, dans la bonne ligne et prend la valeur
-	prenom = document.getElementsByClassName("ModifForm"+i)[0].value;
-	nom = document.getElementsByClassName("ModifForm"+i)[1].value;
-	pays = document.getElementsByClassName("ModifForm"+i)[2].value;
-	age = document.getElementsByClassName("ModifForm"+i)[3].value;
-	categ = document.getElementsByClassName("ModifForm"+i)[4].value;
-	classement = document.getElementsByClassName("ModifForm"+i)[5].value;
-	main = document.getElementsByClassName("ModifForm"+i)[6].value;
+	var ajoutSet = document.getElementsByClassName("ModifForm"+i);
 	
-	console.log("Nouvelle personne : " + prenom+", "+nom+", "+pays+", "+ age+", "+categ+", "+classement+", "+main);
+	ID = ajoutSet[0].value;
+	J1 = ajoutSet[1].value;
+	J2 = ajoutSet[2].value;
+	date = ajoutSet[3].value;
+	heure = ajoutSet[4].value;
+	statut = ajoutSet[5].value;
+	score = ajoutSet[6].value;
+	court = ajoutSet[7].value;
+	
+	console.log("Nouveau match : " + ID+", "+J1+", "+J2+", "+ date+", "+heure+", "+statut+", "+score+", "+court);
 }
 	
 
@@ -95,6 +75,7 @@ try (Statement statement = c.createStatement()) {
         String statut = rs.getString("statut");
         Match M = new Match(id, joueur1, joueur2, jour, "/", heureDébut, court, score, statut);
         listeAnnexe.add(M);
+        System.out.println(heureDébut);
     }
 } catch (SQLException e) {
 	e.printStackTrace();
@@ -132,12 +113,12 @@ tmpMatch[0]='<%=ID%>';
 tmpMatch[1]='<%=Joueur1%>';
 tmpMatch[2]='<%=Joueur2%>';
 tmpMatch[3]='<%=date%>';
-tmpMatch[4]='<%heurematch%>';
+tmpMatch[4]='<%=heurematch%>';
 tmpMatch[5]='<%=statut%>';
 tmpMatch[6]='<%=score%>';
 tmpMatch[7]='<%=court%>';
 
-listeJoueursJS.push(tmpJoueur);
+listeMatchsJS.push(tmpMatch);
 
 </script>
 <li>
@@ -150,7 +131,7 @@ listeJoueursJS.push(tmpJoueur);
  <p><input type="date" class="ModifForm<%=it%>" name="date" value='<%=date%>'> - Date</input></p>
  <p><input type="time" class="ModifForm<%=it%>" name="date" value='<%=heurematch%>'> - Heure</input></p>
  <p><select class="ModifForm<%=it%>" name="Categ">
- 	<option selected="<%=categ%>"><%=categ%></option>
+ 	<option selected="<%=statut%>"><%=statut%></option>
  	<option value="N/A">N/A</option>
     <option value="Prévu">Prévu</option>
     <option value="En cours">En cours</option>
@@ -160,9 +141,16 @@ listeJoueursJS.push(tmpJoueur);
  <p><input class="ModifForm<%=it%>" name="Classement" value='<%=score%>'> - Score </input></p>
  <p><input type="number" min="0" step="1" class="ModifForm<%=it%>" name="court" value='<%=court%>'> - Court</input></p>
 
-   
+  <button id="mod_<%=it%>" class="Modifier">Confirmer modification</button>
+  <script>
+  var mods = document.getElementById("mod_<%=it%>");
+  mods.addEventListener("click", function() {
+  		modifierLog(<%=it%>);
+    });
+  </script>     
 </div>
 
+  <button id="sup_<%=it%>" class="Supprimer">Supprimer</button>
 
 </li>
 <%} %>
@@ -201,7 +189,7 @@ ajouterBouton.addEventListener("click", function() {
 	court = ajoutSet[7].value;
 	
 	if( ID!="" & J1!="" & J2!="" & date!="" & heure!="" & statut!="" & score!="" & court!=""){
-		console.log("Nouveau match :" + ID+", "+J1+", "+J2+", "+ date+", "+heure+", "+statut+", "+score+ ", "+court+".");
+		console.log("Nouveau match :" + ID+", "+J1+", "+J2+", "+ date+", "+heure+", "+statut+", "+score+ ", court :"+court+".");
 
 		<%--
 		try (Statement statement = c.createStatement()) {
@@ -220,6 +208,7 @@ ajouterBouton.addEventListener("click", function() {
 	}else{
 		console.log("/!\\ Attention : au moins un champ a été laissé vide.")
 	}
+});
 
 <%-- Script de la liste extensible--%>
 var coll = document.getElementsByClassName("collapsible");
@@ -236,6 +225,7 @@ for (i = 0; i < coll.length; i++) {
     }
   });
 }
+
 </script>
 </body>
 <jsp:include page="./footer.jsp"></jsp:include>

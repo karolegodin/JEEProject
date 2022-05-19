@@ -35,7 +35,7 @@
                         <a class="nav-link" href="${pageContext.request.contextPath}/editJoueur">Modifier joueurs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/editMatch">Modifier matchs</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/editMatchs">Modifier matchs</a>
                     </li>
                 </ul> 
                 <ul class="navbar-nav ml-auto">
@@ -43,7 +43,7 @@
                         <a href="${pageContext.request.contextPath}/login" class="btn btn-primary btn-sm">Connexion</a>
                     </li>
                     <li class="nav-item">
-                        <a href="${pageContext.request.contextPath}/logout" class="btn btn-primary btn-sm">Déconnexion</a>
+                        <a href="${pageContext.request.contextPath}/logout" class="btn btn-primary btn-sm">Dï¿½connexion</a>
                     </li>
                  
                     <li class="nav-item"> <span style="color:red">[ ${loginedUser.userName} ]</span> </li>
