@@ -6,6 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/rolandgarros.css"> 
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
 </head>
 <body>
     <nav class="nav-second navbar custom-navbar navbar-expand-sm sticky-top bg-white">
