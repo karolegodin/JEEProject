@@ -139,7 +139,7 @@ try (Statement statement = c.createStatement()) {
 	<h1>Bienvenue sur la page des statistiques</h1>
 	<h2>Femmes</h2>
 	
-	<table id="SQLsortMeFemmes" class="table">
+	<table id="SQLsortMeFemmes" class="table table-bordered table-striped table-hover">
 		<thead>
     		<tr>
       			<th>Name</th>
@@ -186,7 +186,7 @@ try (Statement statement = c.createStatement()) {
    
    
 	
-	<table id="SQLsortMeHommes" class="table">
+	<table id="SQLsortMeHommes" class="table table-bordered table-striped table-hover">
 		<thead>
     		<tr>
       			<th>Name</th>
