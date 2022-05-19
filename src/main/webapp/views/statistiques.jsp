@@ -51,8 +51,8 @@ try (Statement statement = c.createStatement()) {
         {listeHommes.add(P);}
         else
         {listeFemmes.add(P);}
-        System.out.println();
-        System.out.println(catégorie + " = Homme : " + catégorie.equals("Homme"));
+        //System.out.println();
+        //System.out.println(catégorie + " = Homme : " + catégorie.equals("Homme"));
     }
   	
   	String action;
