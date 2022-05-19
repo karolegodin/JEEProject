@@ -11571,6 +11571,23 @@ section.has-img-bg:after {
   margin-bottom: 15px;
 }
 
+.edit{
+	display: flex;
+	align-items: center;
+}
+
+.edit .collapsible{
+	width: 100% !important;
+}
+
+.edit .content {
+	width: 100% !important;
+}
+
+.edit div{
+	width: 75%;
+}
+
 .collapsible {
   font-weight: 600;
   background-color: lightgray;

@@ -17,32 +17,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Liste des Joueurs</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/rolandgarros.css"> 
-
-<style>
-.collapsible {
-  background-color: #00503C;
-  color: white;
-  cursor: pointer;
-  padding: 18px;
-  width: 75%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-}
-
-.active, .collapsible:hover {
-  background-color: #D35220;
-}
-
-.content {
-  padding: 0 18px;
-  display: none;
-  overflow: hidden;
-  background-color: #f1f1f1;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/rolandgarros.css">
 
 </style>
 </head>
@@ -142,8 +117,8 @@ tmpJoueur[6]='<%=main%>';
 listeJoueursJS.push(tmpJoueur);
 </script>
 	
-<li>
-
+<li class="edit">
+<div>
 <button type="button" id="<%=it%>" class="collapsible"><%=Prenom%> <%=Nom %> (<%=Pays%>)</button>
 <div class="content">
 
@@ -165,7 +140,7 @@ listeJoueursJS.push(tmpJoueur);
     <option value="Gaucher">Gaucher</option>
  </select> - Main</p>
 
-  <button id="mod_<%=it%>" class="Modifier">Confirmer modification</button>
+  <button id="mod_<%=it%>" class="Modifier btn btn-primary btn-sm">Confirmer modification</button>
   <script>
   var mods = document.getElementById("mod_<%=it%>");
   mods.addEventListener("click", function() {
@@ -174,8 +149,8 @@ listeJoueursJS.push(tmpJoueur);
   </script>
   
  </div> 
- 
-  <button id="sup_<%=it%>" class="Supprimer">Supprimer</button>
+ </div>
+  <button id="sup_<%=it%>" class="Supprimer btn btn-primary btn-sm">Supprimer</button>
 
 </li>
 <% } %>
@@ -201,7 +176,7 @@ console.log(listeJoueursJS);
     <option value="Droitier">Droitier</option>
     <option value="Gaucher">Gaucher</option>
  </select> - Main</p>
-<button id="newPlayer">Confirmer le nouveau joueur</button>
+<button id="newPlayer" class="btn btn-primary btn-sm">Confirmer le nouveau joueur</button>
 
 
 <script>
