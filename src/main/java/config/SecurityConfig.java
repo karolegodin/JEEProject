@@ -25,7 +25,7 @@ public class SecurityConfig {
 		// Configurez pour le rôle "Editeur de Match".
 		List<String> urlPatterns1 = new ArrayList<String>();
 
-		urlPatterns1.add("/editMatch");
+		urlPatterns1.add("/editMatchs");
 
 		mapConfig.put(ROLE_EDITEUR_MATCH, urlPatterns1);
 

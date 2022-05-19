@@ -37,7 +37,6 @@ public class EditeurJoueurServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String http_method = request.getParameter("Http_method");
-		System.out.println(http_method);
 		if (http_method.equals("DELETE")) {
 
 			String prenom = request.getParameter("Prenom_id");

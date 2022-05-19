@@ -75,7 +75,7 @@ try (Statement statement = c.createStatement()) {
         String statut = rs.getString("statut");
         Match M = new Match(id, joueur1, joueur2, jour, "/", heureDébut, court, score, statut);
         listeAnnexe.add(M);
-        System.out.println(heureDébut);
+      //  System.out.println(heureDébut);
     }
 } catch (SQLException e) {
 	e.printStackTrace();
@@ -123,13 +123,15 @@ listeMatchsJS.push(tmpMatch);
 </script>
 <li class="edit">
 <div>
+<form method="POST" action = "${pageContext.request.contextPath}/editMatchs"></form>
+<input class="ModifForm<%=it%>" name="Http_method" value='POST' type="hidden">
 <button type="button" class="collapsible"><%=Joueur1%> - <%=Joueur2 %></button>
 <div class="content">
- <p><input class="ModifForm<%=it%>" name="id" value='<%=ID%>'> - ID</input></p>
- <p><input class="ModifForm<%=it%>" name="J1" value='<%=Joueur1%>'> - Joueur 1</input></p>
- <p><input class="ModifForm<%=it%>" name="J2" value='<%=Joueur2%>'> - Joueur 2</input></p>
- <p><input type="date" class="ModifForm<%=it%>" name="date" value='<%=date%>'> - Date</input></p>
- <p><input type="time" class="ModifForm<%=it%>" name="date" value='<%=heurematch%>'> - Heure</input></p>
+ <p><input class="ModifForm<%=it%>" name="id" value='<%=ID%>'> - ID </p>
+ <p><input class="ModifForm<%=it%>" name="J1" value='<%=Joueur1%>'> - Joueur 1 </p>
+ <p><input class="ModifForm<%=it%>" name="J2" value='<%=Joueur2%>'> - Joueur 2 </p>
+ <p><input type="date" class="ModifForm<%=it%>" name="date" value='<%=date%>'> - Date </p>
+ <p><input type="time" class="ModifForm<%=it%>" name="heure" value='<%=heurematch%>'> - Heure </p>
  <p><select class="ModifForm<%=it%>" name="Categ">
  	<option selected="<%=statut%>"><%=statut%></option>
  	<option value="N/A">N/A</option>
@@ -138,10 +140,11 @@ listeMatchsJS.push(tmpMatch);
     <option value="Annulé">Annulé</option>
      <option value="Terminé">Terminé</option>
  </select> - Statut</p>
- <p><input class="ModifForm<%=it%>" name="Classement" value='<%=score%>'> - Score </input></p>
- <p><input type="number" min="0" step="1" class="ModifForm<%=it%>" name="court" value='<%=court%>'> - Court</input></p>
+ <p><input class="ModifForm<%=it%>" name="Score" value='<%=score%>'> - Score  </p>
+ <p><input type="number" min="0" step="1" class="ModifForm<%=it%>" name="court" value='<%=court%>'> - Court </p>
 
-  <button id="mod_<%=it%>" class="Modifier btn btn-primary btn-sm">Confirmer modification</button>
+  <button type='submit' id="mod_<%=it%>" class="Modifier btn btn-primary btn-sm">Confirmer modification</button>
+  
   <script>
   var mods = document.getElementById("mod_<%=it%>");
   mods.addEventListener("click", function() {
@@ -150,18 +153,24 @@ listeMatchsJS.push(tmpMatch);
   </script>     
 </div>
 </div>
+<form  method="POST" action = "${pageContext.request.contextPath}/editMatchs">
+<input class="ModifForm<%=it%>" name="id" value='<%=ID%>' type="hidden">
+  <input class="ModifForm<%=it%>" name="Http_method" value="DELETE" type="hidden">
   <button id="sup_<%=it%>" class="Supprimer btn btn-primary btn-sm">Supprimer</button>
+</form>
 
 </li>
 <%} %>
 </ul>
 
 <h2>Ajouter un nouveau match :</h2>
- <p><input class="ModifFormAjout" name="id" value=''> - ID</input></p>
- <p><input class="ModifFormAjout" name="J1" value=''> - Joueur 1</input></p>
- <p><input class="ModifFormAjout" name="J2" value=''> - Joueur 2</input></p>
- <p><input type="date" class="ModifFormAjout" name="date" value=''> - Date</input></p>
- <p><input type="time" class="ModifFormAjout" name="date" value=''> - Heure</input></p>
+<form method="POST" action = "${pageContext.request.contextPath}/editMatchs">
+<input class="ModifForm<%=it%>" name="Http_method" value='NEW' type="hidden">
+ <p><input class="ModifFormAjout" name="id" value=''> - ID </p>
+ <p><input class="ModifFormAjout" name="J1" value=''> - Joueur 1 </p>
+ <p><input class="ModifFormAjout" name="J2" value=''> - Joueur 2 </p>
+ <p><input type="date" class="ModifFormAjout" name="date" value=''> - Date </p>
+ <p><input type="time" class="ModifFormAjout" name="date" value=''> - Heure </p>
  <p><select class="ModifFormAjout" name="Categ">
  	<option value="N/A">N/A</option>
     <option value="Prévu">Prévu</option>
@@ -169,9 +178,10 @@ listeMatchsJS.push(tmpMatch);
     <option value="Annulé">Annulé</option>
      <option value="Terminé">Terminé</option>
  </select> - Statut</p>
- <p><input class="ModifFormAjout" name="Classement" value=''> - Score </input></p>
- <p><input type="number" min="0" step="1" class="ModifFormAjout" name="court" value=''> - Court</input></p>
+ <p><input class="ModifFormAjout" name="Classement" value=''> - Score  </p>
+ <p><input type="number" min="0" step="1" class="ModifFormAjout" name="court" value=''> - Court </p>
 <button id="newMatch" class="btn btn-primary btn-sm">Confirmer le nouveau match</button>
+</form>
 
 <script>
 
