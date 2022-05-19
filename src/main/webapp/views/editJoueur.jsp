@@ -122,25 +122,30 @@ listeJoueursJS.push(tmpJoueur);
 <button type="button" id="<%=it%>" class="collapsible"><%=Prenom%> <%=Nom %> (<%=Pays%>)</button>
 <div class="content">
 
- <p><input class="ModifForm<%=it%>" name="Prenom" value='<%=Prenom%>'> - Prenom</input></p>
- <p><input class="ModifForm<%=it%>" name="Nom" value='<%=Nom %>'> - Nom</input></p>
- <p><input class="ModifForm<%=it%>" name="Pays" value='<%=Pays%>'> - Pays</input></p>
- <p><input type="number" min="0" step="1" class="ModifForm<%=it%>" name="Age" value='<%=Age%>'> - Age</input></p>
+<form method="POST" action = "${pageContext.request.contextPath}/editJoueur">
+<input class="ModifForm<%=it%>" name="Http_method" value='POST' type="hidden">
+<input class="ModifForm<%=it%>" name="Prenom_id" value='<%=Prenom%>' type="hidden">
+ <input class="ModifForm<%=it%>" name="Nom_id" value='<%=Nom %>' type="hidden">
+  <p><input class="ModifForm<%=it%>" name="Prenom" value='<%=Prenom%>'> - Prenom</p>
+ <p><input class="ModifForm<%=it%>" name="Nom" value='<%=Nom %>'> - Nom</p>
+ <p><input class="ModifForm<%=it%>" name="Pays" value='<%=Pays%>'> - Pays</p>
+ <p><input type="number" min="0" step="1" class="ModifForm<%=it%>" name="Age" value='<%=Age%>'> - Age</p>
  <p><select class="ModifFormA<%=it%>" name="Categ">
  	<option selected="<%=categ%>"><%=categ%></option>
  	<option value="N/A">N/A</option>
     <option value="Femme">Femme</option>
     <option value="Homme">Homme</option>
  </select> - Catégorie</p>
- <p><input type="number" min="0" step="1" class="ModifForm<%=it%>" name="Classement" value='<%=classement%>'> - Classement mondial</input></p>
-  <p><select class="ModifForm<%=it%>" name="Main" value='<%=main%>'>
+ <p><input type="number" min="0" step="1" class="ModifForm<%=it%>" name="Classement" value='<%=classement%>'> - Classement mondial</p>
+  <p><select class="ModifForm<%=it%>" name="Main">
   	<option selected="<%=main%>"><%=main%></option>
  	<option value="N/A">N/A</option>
     <option value="Droitier">Droitier</option>
     <option value="Gaucher">Gaucher</option>
  </select> - Main</p>
 
-  <button id="mod_<%=it%>" class="Modifier btn btn-primary btn-sm">Confirmer modification</button>
+  <button type="submit" id="mod_<%=it%>" class="Modifier btn btn-primary btn-sm">Confirmer modification</button>
+</form>
   <script>
   var mods = document.getElementById("mod_<%=it%>");
   mods.addEventListener("click", function() {
@@ -150,7 +155,12 @@ listeJoueursJS.push(tmpJoueur);
   
  </div> 
  </div>
+ <form  method="POST" action = "${pageContext.request.contextPath}/editJoueur">
+  <input class="ModifForm<%=it%>" name="Http_method" value="DELETE" type="hidden">
+<input class="ModifForm<%=it%>" name="Prenom_id" value='<%=Prenom%>' type="hidden">
+ <input class="ModifForm<%=it%>" name="Nom_id" value='<%=Nom %>' type="hidden">
   <button id="sup_<%=it%>" class="Supprimer btn btn-primary btn-sm">Supprimer</button>
+ </form>
 
 </li>
 <% } %>
@@ -161,22 +171,25 @@ console.log(listeJoueursJS);
 </ul>
 
 <h2>Ajouter un nouveau joueur :</h2>
- <p><input class="ModifFormAjout" name="Prenom" value=''> - Prenom</input></p>
- <p><input class="ModifFormAjout" name="Nom" value=''> - Nom</input></p>
- <p><input class="ModifFormAjout" name="Pays" value=''> - Pays</input></p>
- <p><input type="number" min="0" step="1" class="ModifFormAjout" name="Age" value=''> - Age</input></p>
+<form method="POST" action="${pageContext.request.contextPath}/editJoueur">
+<input class="ModifForm<%=it%>" name="Http_method" value='NEW' type="hidden">
+ <p><input class="ModifFormAjout" name="Prenom" value=''> - Prenom</p>
+ <p><input class="ModifFormAjout" name="Nom" value=''> - Nom</p>
+ <p><input class="ModifFormAjout" name="Pays" value=''> - Pays</p>
+ <p><input type="number" min="0" step="1" class="ModifFormAjout" name="Age" value=''> - Age</p>
  <p><select class="ModifFormAjout" name="Categ">
  	<option value="N/A">N/A</option>
     <option value="Femme">Femme</option>
     <option value="Homme">Homme</option>
  </select> - Catégorie</p>
- <p><input type="number" min="0" step="1" class="ModifFormAjout" name="Classement" value=''> - Classement mondial</input></p>
+ <p><input type="number" min="0" step="1" class="ModifFormAjout" name="Classement" value=''> - Classement mondial</p>
   <p><select class="ModifFormAjout" name="Main">
  	<option value="N/A">N/A</option>
     <option value="Droitier">Droitier</option>
     <option value="Gaucher">Gaucher</option>
  </select> - Main</p>
-<button id="newPlayer" class="btn btn-primary btn-sm">Confirmer le nouveau joueur</button>
+<button type="submit" id="newPlayer" class="btn btn-primary btn-sm">Confirmer le nouveau joueur</button>
+</form>
 
 
 <script>
