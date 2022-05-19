@@ -121,8 +121,8 @@ tmpMatch[7]='<%=court%>';
 listeMatchsJS.push(tmpMatch);
 
 </script>
-<li>
-
+<li class="edit">
+<div>
 <button type="button" class="collapsible"><%=Joueur1%> - <%=Joueur2 %></button>
 <div class="content">
  <p><input class="ModifForm<%=it%>" name="id" value='<%=ID%>'> - ID</input></p>
@@ -141,7 +141,7 @@ listeMatchsJS.push(tmpMatch);
  <p><input class="ModifForm<%=it%>" name="Classement" value='<%=score%>'> - Score </input></p>
  <p><input type="number" min="0" step="1" class="ModifForm<%=it%>" name="court" value='<%=court%>'> - Court</input></p>
 
-  <button id="mod_<%=it%>" class="Modifier">Confirmer modification</button>
+  <button id="mod_<%=it%>" class="Modifier btn btn-primary btn-sm">Confirmer modification</button>
   <script>
   var mods = document.getElementById("mod_<%=it%>");
   mods.addEventListener("click", function() {
@@ -149,8 +149,8 @@ listeMatchsJS.push(tmpMatch);
     });
   </script>     
 </div>
-
-  <button id="sup_<%=it%>" class="Supprimer">Supprimer</button>
+</div>
+  <button id="sup_<%=it%>" class="Supprimer btn btn-primary btn-sm">Supprimer</button>
 
 </li>
 <%} %>
@@ -171,7 +171,7 @@ listeMatchsJS.push(tmpMatch);
  </select> - Statut</p>
  <p><input class="ModifFormAjout" name="Classement" value=''> - Score </input></p>
  <p><input type="number" min="0" step="1" class="ModifFormAjout" name="court" value=''> - Court</input></p>
-<button id="newMatch">Confirmer le nouveau match</button>
+<button id="newMatch" class="btn btn-primary btn-sm">Confirmer le nouveau match</button>
 
 <script>
 
