@@ -2,8 +2,12 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.Arrays,java.util.List" %>
 <%@ page import="java.util.*" %>
-<%@ page import="org.tutorial.Player" %>
 <%@ page import="org.tutorial.*" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.Date" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="java.sql.Statement" %>
     
 <% ArrayList<Player> listeJoueurs = (ArrayList<Player>)request.getAttribute("listeJoueurs"); %>
 <%-- TODO : créer une listeJoueurs dans le doProcess du servlet --%>
@@ -47,45 +51,36 @@
 <script>
 <%-- Script --%>
 
-function init(){
-	var i;
-	for(i = 0; i < listeJoueursJS.length; i++){
-		createListItem( listeJoueursJS[i], i );
-	}
-}
-
-function createListItem(joueur, i){
-	let item = document.createElement("li");
-	
-	let prenom = joueur[0];
-	let nom = joueur[1];
-	let pays = joueur[2];
-	
-	let mainButton = document.createElement("button");
-	mainButton.setAttribute("type","button");
-	mainButton.setAttribute("class","collapsible");
-	mainButton.setAttribute("id", i);
-	mainButton.innerHTML= prenom + nom + "(" + pays + ")";
-	mainButton.addEventListener("click", function() {
-  		//modifierLog(1);
-    });
-	
-}
-
 var listeJoueursJS = new Array();
 
 <%
 
 ArrayList<Player> listeAnnexe = new ArrayList<Player>();
-Player J1 = new Player("Mark", "Hamil",  "Droitier",  "UK",  69,  "Féminin", 10);
-Player J2  = new Player("Stephen", "Hawking",  "Gaucher",  "UK",  72,  "Masculin", 42);
-Player J3  = new Player("LAM", "SIPRENDI",  "Droitier",  "FR",  21,  "Masculin", 10938983);
-Player J4  = new Player("Karlol", "Karglass",  "Droitier",  "UK",  17,  "Masculin", 42);
 
-listeAnnexe.add(J1) ;
-listeAnnexe.add(J2) ;
-listeAnnexe.add(J3) ;
-listeAnnexe.add(J4) ;
+Connection c = DBManager.getInstance().getConnection();
+try (Statement statement = c.createStatement()) {
+  ResultSet rs = statement.executeQuery("SELECT * FROM info_team03_schema.joueurs ORDER BY catégorie DESC, classementMondial ASC;");
+    while (rs.next()) {
+    	String prénom = rs.getString("prénom");
+        String nom = rs.getString("nom");
+        String pays = rs.getString("pays");
+        String catégorie = rs.getString("catégorie");
+        int classementMondial = rs.getInt("classementMondial");
+        String main = rs.getString("main");
+        int age = rs.getInt("age");
+        Player P = new Player(prénom, nom, catégorie, pays, classementMondial, main, age);
+        listeAnnexe.add(P);
+    }
+} catch (SQLException e) {
+	e.printStackTrace();
+} finally {
+    if (c != null) {
+        try {
+            c.close();
+        } catch (SQLException e) {}
+    }
+}
+
 %>
 
 
@@ -109,7 +104,7 @@ function supprimerLog(i){
 	console.log("Bouton Supprimer was clicked : "+i+".")
 }
 
-//document.addEventListener('DOMContentLoaded',init);
+
 </script>
 
 <body>
@@ -152,18 +147,25 @@ listeJoueursJS.push(tmpJoueur);
 <button type="button" id="<%=it%>" class="collapsible"><%=Prenom%> <%=Nom %> (<%=Pays%>)</button>
 <div class="content">
 
-  <p><input class="ModifForm<%=it%>" name="Prenom" value='<%=Prenom%>'> - Prenom</input></p>
-  <p><input class="ModifForm<%=it%>" name="Nom" value='<%=Nom%>'> - Nom</input></p>
-  <p><input class="ModifForm<%=it%>" name="Pays" value='<%=Pays%>'> - Pays</input></p>
-  <p><input class="ModifForm<%=it%>" name="Age" value='<%=Age%>'> - Age</input></p>
-  <p><input class="ModifForm<%=it%>" name="Categ" value='<%=categ%>'> - Categorie</input></p>
-  <p><input class="ModifForm<%=it%>" name="Classement" value='<%=classement%>'> - Classement mondial</input></p>
-  <p><input class="ModifForm<%=it%>" name="Prenom" value='<%=main%>'> - Main</input></p>
+ <p><input class="ModifForm<%=it%>" name="Prenom" value='<%=Prenom%>'> - Prenom</input></p>
+ <p><input class="ModifForm<%=it%>" name="Nom" value='<%=Nom %>'> - Nom</input></p>
+ <p><input class="ModifForm<%=it%>" name="Pays" value='<%=Pays%>'> - Pays</input></p>
+ <p><input type="number" min="0" step="1" class="ModifForm<%=it%>" name="Age" value='<%=Age%>'> - Age</input></p>
+ <p><select class="ModifFormA<%=it%>" name="Categ">
+ 	<option selected="<%=categ%>"><%=categ%></option>
+ 	<option value="N/A">N/A</option>
+    <option value="Femme">Femme</option>
+    <option value="Homme">Homme</option>
+ </select> - Catégorie</p>
+ <p><input type="number" min="0" step="1" class="ModifForm<%=it%>" name="Classement" value='<%=classement%>'> - Classement mondial</input></p>
+  <p><select class="ModifForm<%=it%>" name="Main" value='<%=main%>'>
+  	<option selected="<%=main%>"><%=main%></option>
+ 	<option value="N/A">N/A</option>
+    <option value="Droitier">Droitier</option>
+    <option value="Gaucher">Gaucher</option>
+ </select> - Main</p>
 
- 
-</div>
-
-  <button id="mod_<%=it%>" class="Modifier">Modifier</button>
+  <button id="mod_<%=it%>" class="Modifier">Confirmer modification</button>
   <script>
   var mods = document.getElementById("mod_<%=it%>");
   mods.addEventListener("click", function() {
@@ -171,6 +173,8 @@ listeJoueursJS.push(tmpJoueur);
     });
   </script>
   
+ </div> 
+ 
   <button id="sup_<%=it%>" class="Supprimer">Supprimer</button>
 
 </li>
@@ -181,9 +185,63 @@ console.log(listeJoueursJS);
 </script>
 </ul>
 
-<%-- Script de la liste extensible--%>
+<h2>Ajouter un nouveau joueur :</h2>
+ <p><input class="ModifFormAjout" name="Prenom" value=''> - Prenom</input></p>
+ <p><input class="ModifFormAjout" name="Nom" value=''> - Nom</input></p>
+ <p><input class="ModifFormAjout" name="Pays" value=''> - Pays</input></p>
+ <p><input type="number" min="0" step="1" class="ModifFormAjout" name="Age" value=''> - Age</input></p>
+ <p><select class="ModifFormAjout" name="Categ">
+ 	<option value="N/A">N/A</option>
+    <option value="Femme">Femme</option>
+    <option value="Homme">Homme</option>
+ </select> - Catégorie</p>
+ <p><input type="number" min="0" step="1" class="ModifFormAjout" name="Classement" value=''> - Classement mondial</input></p>
+  <p><select class="ModifFormAjout" name="Main">
+ 	<option value="N/A">N/A</option>
+    <option value="Droitier">Droitier</option>
+    <option value="Gaucher">Gaucher</option>
+ </select> - Main</p>
+<button id="newPlayer">Confirmer le nouveau joueur</button>
+
+
 <script>
 
+ajouterBouton = document.getElementById("newPlayer");
+ajouterBouton.addEventListener("click", function() {
+	var ajoutSet = document.getElementsByClassName("ModifFormAjout");
+	
+	prenom = ajoutSet[0].value;
+	nom = ajoutSet[1].value;
+	pays = ajoutSet[2].value;
+	age = ajoutSet[3].value;
+	categ = ajoutSet[4].value;
+	classement = ajoutSet[5].value;
+	main = ajoutSet[6].value;
+	
+	if( prenom!="" & nom!="" & pays!="" & age!="" & categ!="" & classement!="" & main!=""){
+		console.log("Nouveau joueur :" + prenom+", "+nom+", "+pays+", "+ age+", "+categ+", "+classement+", "+main);
+
+		<%--
+	try (Statement statement = c.createStatement()) {
+  ResultSet rs = statement.executeQuery(" @PLS fonction qui crée un nouveau joueur ");
+} catch (SQLException e) {
+	e.printStackTrace();
+} finally {
+    if (c != null) {
+        try {
+            c.close();
+        } catch (SQLException e) {}
+    }
+}
+--%>
+	}else{
+		console.log("/!\\ Attention : au moins un champ a été laissé vide.")
+	}
+	
+});
+
+
+<%-- Script de la liste extensible--%>
 var coll = document.getElementsByClassName("collapsible");
 var i;
 for (i = 0; i < coll.length; i++) {

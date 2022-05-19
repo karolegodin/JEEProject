@@ -2,7 +2,6 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.Arrays,java.util.List" %>
 <%@ page import="java.util.*" %>
-<%@ page import="org.tutorial.Player" %>
 <%@ page import="org.tutorial.*" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.Date" %>
